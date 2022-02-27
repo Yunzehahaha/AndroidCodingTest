@@ -23,7 +23,6 @@ abstract class MyDatabase: RoomDatabase() {
                     "my_database"
                 )
                     .fallbackToDestructiveMigration()
-//                    .addCallback(DatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
                 instance
@@ -31,22 +30,4 @@ abstract class MyDatabase: RoomDatabase() {
         }
     }
 
-//    private class DatabaseCallback(
-//        private val scope: CoroutineScope
-//    ) : RoomDatabase.Callback() {
-//
-//        override fun onCreate(db: SupportSQLiteDatabase) {
-//            super.onCreate(db)
-//            INSTANCE?.let { database ->
-//                scope.launch(Dispatchers.IO) {
-//                    populateDatabase(database.myDao())
-//                }
-//            }
-//        }
-//
-//        suspend fun populateDatabase(dao: MyDao) {
-//            // Delete all content here.
-//            dao.deleteAll()
-//        }
-//    }
 }
