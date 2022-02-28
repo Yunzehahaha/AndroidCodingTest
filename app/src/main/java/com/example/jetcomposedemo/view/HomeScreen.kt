@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.navArgument
 import com.example.jetcomposedemo.model.Record
 
 @Composable
@@ -32,19 +31,19 @@ fun HomeScreen(vm: HomeViewModel,navController: NavController) {
             },
         )
     }) {
-        homeScreenListView(vm,navController)
+        HomeScreenListView(vm,navController)
     }
 }
 
 @Composable
-fun homeScreenListView(vm: HomeViewModel,navController: NavController) {
+fun HomeScreenListView(vm: HomeViewModel,navController: NavController) {
     val items by vm.allData.observeAsState(listOf())
     if (items.isNotEmpty()) {
-        val recordByYear = vm.getDataByYear(items);
+        val recordByYear = vm.getTotalDataByYear()
         LazyColumn(Modifier.fillMaxSize()) {
 
             items(recordByYear.size) { index ->
-                yearItem(recordByYear[index],navController)
+                YearItem(recordByYear[index],navController)
                 Divider(color = Color.Black)
 
                 val lastIndex = recordByYear.lastIndex
@@ -57,7 +56,7 @@ fun homeScreenListView(vm: HomeViewModel,navController: NavController) {
 }
 
 @Composable
-fun yearItem(record: Record,navController: NavController) {
+fun YearItem(record: Record,navController: NavController) {
     Column(Modifier.clickable {
         navController.navigate(route = "${Screen.Detail.route}/${record.quarter}")
     }.fillMaxWidth(),) {

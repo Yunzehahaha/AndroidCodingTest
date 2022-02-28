@@ -1,6 +1,7 @@
 package com.example.jetcomposedemo.di
 
 import com.example.jetcomposedemo.HomeViewModel
+import com.example.jetcomposedemo.Tracker
 import com.example.jetcomposedemo.repository.MyRepository
 import com.example.jetcomposedemo.room.MyDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +14,8 @@ val viewModelModule = module {
     factory { CoroutineScope(SupervisorJob()) }
     single { MyDatabase.getDatabase(androidApplication(),get()) }
     single { MyRepository(androidApplication(),get<MyDatabase>().myDao(),get()) }
-    viewModel { HomeViewModel(get()) }
+    single {Tracker()}
+    viewModel { HomeViewModel(get(),get()) }
 }
 
 val appModule = listOf(viewModelModule)
