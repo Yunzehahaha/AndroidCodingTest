@@ -15,7 +15,7 @@ abstract class MyDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: MyDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): MyDatabase {
+        fun getDatabase(context: Context): MyDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,

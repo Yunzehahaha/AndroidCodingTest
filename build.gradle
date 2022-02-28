@@ -30,8 +30,10 @@ ext {
     retrofitVersion     = '2.5.0'
     compose_version     = '1.1.0-rc03'
     nav_version         = "2.4.1"
+
     // testing
-    junitVersion = '4.13.1'
-    espressoVersion = '3.1.0'
+    junitVersion         = '4.13.1'
+    espressoVersion      = '3.1.0'
     androidxJunitVersion = '1.1.2'
+    mockk                = '1.12.0'
 }

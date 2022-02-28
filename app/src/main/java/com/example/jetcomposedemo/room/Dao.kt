@@ -13,11 +13,11 @@ interface Dao {
     fun getAllData(): Flow<List<Record>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addNewData(record: Record)
+    fun addNewData(recorda: List<Record>)
 
     @Query("UPDATE record SET id = :id, volume = :volume, quarter = :quarter WHERE id =:id")
-    suspend fun updateData(id: Int, volume: Double, quarter: String)
+    fun updateData(id: Int, volume: Double, quarter: String)
 
     @Query("DELETE FROM record")
-    suspend fun deleteAll()
+    fun deleteAll()
 }
