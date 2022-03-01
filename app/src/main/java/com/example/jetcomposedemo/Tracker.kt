@@ -11,8 +11,8 @@ class Tracker {
     }
 
     fun onOrentationChange(current: String) {
-        if (current != currentOrentation) {
-            currentOrentation = current
+        if (current != currentOrientation) {
+            currentOrientation = current
             Log.d(TAG, "User device is rotated to $current")
         }
     }
@@ -20,6 +20,6 @@ class Tracker {
     companion object {
         val TAG = "AppTracker"
         var currentViewing = ""
-        var currentOrentation = ""
+        var currentOrientation = ""
     }
 }

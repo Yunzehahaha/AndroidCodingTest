@@ -11,11 +11,11 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     single { MyDatabase.getDatabase(androidApplication()) }
-    single {ApiClient.create(androidApplication(),"https://data.gov.sg/")}
-    single { MyRepository(get(),get<MyDatabase>().myDao()) }
-    single {Tracker()}
+    single { ApiClient.create(androidApplication(), "https://data.gov.sg/") }
+    single { MyRepository(get(), get<MyDatabase>().myDao()) }
+    single { Tracker() }
 
-    viewModel { HomeViewModel(get(),get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }
 
 val appModule = listOf(viewModelModule)
